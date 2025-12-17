@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO APP</title>
+       <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    
+<div class="card">
+    <h2>To-Do App</h2>
+
+    <input type="text" id="todo" placeholder="Enter a todo">
+    <button onclick="addTASK()">Add</button>
+    <div id="list">
+  
+    </div>
+</div>
+
+
+<script>
+function remove() {
+    this.parentElement.remove();
+}
+
+function addTASK() {
+    const input = document.getElementById("todo");
+    const value = input.value.trim();
+
+    if (value === "") return;
+
+    const itemContainer = document.createElement("div");
+    itemContainer.className = "todo-item";
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = value;
+
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "delete-btn";
+
+
+    deleteBtn.onclick = remove;
+
+
+    itemContainer.appendChild(textSpan);
+    itemContainer.appendChild(deleteBtn);
+    document.getElementById("list").appendChild(itemContainer);
+
+    input.value = "";
+}
+</script>
+</body>
+</html>
